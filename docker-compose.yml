@@ -1,0 +1,17 @@
+version: "3"
+services:
+  web:
+    build: ./web
+    hostname: apacheC7
+    ports:
+      - "8000:8000"
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: bdairam
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
