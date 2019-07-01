@@ -9,6 +9,7 @@ services:
       - db
     volumes:
       - ./web:/var/www/html
+      - ./log/httpd:/var/log/httpd
   db:
     image: mariadb
     restart: always
@@ -17,6 +18,8 @@ services:
       MYSQL_DATABASE: shop
       MYSQL_USER: shopkeeper
       MYSQL_PASSWORD: repeekpohs
+    volumes:
+      - ./log/mariadb:/var/log/mariadb
   adminer:
     image: adminer
     restart: always
