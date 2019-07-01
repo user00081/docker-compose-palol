@@ -3,6 +3,8 @@ ARG PHP_VERSION=php73
 FROM centos:${CODE_VERSION}
 MAINTAINER Luca Palo <palo@programmer.net>
 
+RUN yum repolist
+
 RUN yum install -y ntp
 RUN ntpdate time.nist.gov
 RUN timedatectl set-timezone Europe/Zurich
