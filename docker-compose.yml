@@ -4,7 +4,8 @@ services:
     build: ./web
     hostname: apacheC7
     ports:
-      - "8000:8000"
+      - 8000:80
+      - 8443:443
   db:
     image: mariadb
     restart: always
@@ -15,3 +16,9 @@ services:
     restart: always
     ports:
       - 8080:8080
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - 8888:8888
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
