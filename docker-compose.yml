@@ -1,24 +1,24 @@
 version: "3"
 services:
-  web:
-    build: ./web
-    hostname: apacheC7
+  httpd:
+    image: httpd:2.4
     ports:
-      - 8000:80
+      - 8080:80
       - 8443:443
+    depends_on:
+      - db
+    volumes:
+      - ./web:/var/www/html
   db:
     image: mariadb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: bdairam
+      MYSQL_DATABASE: shop
+      MYSQL_USER: shopkeeper
+      MYSQL_PASSWORD: repeekpohs
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - 8888:8888
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - 8081:8080
