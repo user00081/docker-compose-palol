@@ -1,0 +1,13 @@
+{
+    "require": {
+        "php": ">=7.3",
+        "ext-pdo_sqlite": "*",
+        "doctrine/orm": "2.*",
+        "symfony/yaml": "4.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    }
+}
